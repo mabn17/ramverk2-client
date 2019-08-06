@@ -6,6 +6,7 @@ import { environment } from '../../../environments/environment';
 import { IAllReports } from '../../@Interfaces/IAllReports';
 import { IExpressError } from '../../@Interfaces/IExpressError';
 import { ILogin } from '../../@Interfaces/ILogin';
+import { IRegister } from '../../@Interfaces/IRegister';
 import { ISiteText } from '../../@Interfaces/ISiteText';
 import { IUserLogReg } from '../../@Interfaces/IUserLogReg';
 
@@ -20,6 +21,7 @@ export class HttpService {
   private home = `${this.baseURL}/`;
   private reports = `${this.baseURL}/reports`;
   private login = `${this.baseURL}/login`;
+  private register = `${this.baseURL}/register`;
 
   constructor(private http: HttpClient) { }
 
@@ -34,6 +36,11 @@ export class HttpService {
   doLogin(userInfo: IUserLogReg, url: string = this.login):
     Observable<ILogin> {
       return this.http.post<ILogin>(url, userInfo);
+    }
+
+  doRegister(userInfo: IUserLogReg, url: string = this.register):
+    Observable<IRegister> {
+      return this.http.post<IRegister>(url, userInfo);
     }
 
   getHomeText(url: string = this.home):

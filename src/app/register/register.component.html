@@ -1,1 +1,24 @@
-<p>register works!</p>
+<div class="form-div">
+  <h3 class="text-center"> {{ errorMessage }} </h3>
+  <form>
+    <h1>Ramverk 2 Registrering</h1>
+    <div class="inset">
+    <p>
+      <label for="email">E-POST ADRESS</label>
+      <input type="text" name="email" [(ngModel)]="email">
+    </p>
+    <p>
+      <label for="password">LÖSENORD</label>
+      <input type="password" name="pass" [(ngModel)]="pass">
+    </p>
+    <p>
+      <label for="password">LÖSENORD - IGEN</label>
+      <input type="password" name="passAgain" [(ngModel)]="passAgain">
+    </p>
+    </div>
+    <p class="p-container">
+      <span class="is-link px-3" routerLink="/login">Redan Medlem ?</span>
+      <input class="mt-5" (click)="register()" type="submit" name="go" id="go" value="Registrera">
+    </p>
+  </form>
+</div>
