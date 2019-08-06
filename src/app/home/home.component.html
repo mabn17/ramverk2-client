@@ -1,1 +1,7 @@
-<p>home works!</p>
+<ng-container *ngIf="errorMessage; else elseTemplate">
+  {{ errorMessage }}
+</ng-container>
+<ng-template #elseTemplate>
+  <div [innerHTML]=data>
+  </div>
+</ng-template>
