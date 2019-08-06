@@ -1,1 +1,17 @@
-<p>add-report works!</p>
+<form class="w-100">
+  <h1>Skapa ny Rapport</h1>
+  <div class="inset">
+  <p>
+      <label for="title">NAMN</label><br>
+      <input type="text" name="title" [(ngModel)]="title">
+  </p>
+  <p>
+      <label for="password">TEXT <b>(ANVÄND MARKDOWN)</b></label><br>
+      <textarea class="" name="data" [(ngModel)]="data"></textarea>
+  </p>
+  </div>
+  <p *ngIf="errorMessage"><b>{{ errorMessage }}</b></p>
+  <p class="p-container">
+      <input class="mt-5" (click)="send()" type="submit" name="go" id="go" value="Spara">
+  </p>
+</form>

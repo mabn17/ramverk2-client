@@ -4,8 +4,10 @@ import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
 import { IAllReports } from '../../@Interfaces/IAllReports';
+import { ICreateNewReport } from '../../@Interfaces/ICreateNewReport';
 import { IExpressError } from '../../@Interfaces/IExpressError';
 import { ILogin } from '../../@Interfaces/ILogin';
+import { INewReport } from '../../@Interfaces/INewReport';
 import { IRegister } from '../../@Interfaces/IRegister';
 import { ISiteText } from '../../@Interfaces/ISiteText';
 import { IUserLogReg } from '../../@Interfaces/IUserLogReg';
@@ -56,5 +58,17 @@ export class HttpService {
   getSpesificReport(kmom: string, url: string = this.reports):
     Observable<ISiteText> {
       return this.http.get<ISiteText>(`${url}/${kmom}`);
+    }
+
+  addNewReport(
+    report: ICreateNewReport,
+    token: string,
+    url: string = this.reports
+  ): Observable<INewReport> {
+      return this.http.post<INewReport>(url, report, {
+        headers: {
+          'x-access-token': token
+        }
+      });
     }
 }
