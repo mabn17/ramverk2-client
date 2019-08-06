@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { environment } from '../../environments/environment';
+import { HttpService } from '../services/http/http.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,12 +10,20 @@ import { environment } from '../../environments/environment';
 export class HomeComponent implements OnInit {
 
   private data: any;
-  private errorMessage = 'Placeholder';
+  private errorMessage: string;
 
-  constructor() { }
+  constructor(private http: HttpService) { }
 
   ngOnInit() {
-    // Figure out how to get data from api
-  }
 
+    this.http.getHomeText().subscribe(
+      data => {
+        this.data = data.data.data;
+      },
+      // Errors will call this callback instead:
+      err => {
+        this.errorMessage = this.http.handleError(err);
+      }
+    );
+  }
 }
