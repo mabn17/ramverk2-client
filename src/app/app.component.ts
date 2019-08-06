@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from './services/user/user.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,16 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'redovisa';
 
-  constructor() {}
+  token?: string;
 
-  ngOnInit() {}
+  constructor(private user: UserService) {}
+
+  ngOnInit(): void {
+    this.token = this.user.getToken(false);
+  }
+
+  logOut() {
+    this.user.removeToken('/login');
+    this.token = null;
+  }
 }

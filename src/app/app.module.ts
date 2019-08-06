@@ -14,6 +14,7 @@ import { HttpService } from './services/http/http.service';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { AddReportComponent } from './add-report/add-report.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AddReportComponent } from './add-report/add-report.component';
     AboutComponent,
     RegisterComponent,
     LoginComponent,
-    AddReportComponent
+    AddReportComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
