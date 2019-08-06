@@ -1,1 +1,92 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css?family=Nunito,400,700&display=swap');
+
+$primary-color: #212529;
+$body-bg-color: #282424;
+$font-family: 'Nunito', sans-serif;
+$nav-link-color: #fff;
+$font-size: 18px;
+$font-color: #c12634f2;
+$breakpoint-tablet: 768px;
+
+/* -------------- Wrappers ------------------- */
+body {
+    margin: 0;
+    font-family: $font-family;
+    font-size: $font-size;
+    color: $font-color;
+    background-color: $body-bg-color;
+}
+
+header {
+    background: $primary-color;
+    padding: 0.2em 0;
+}
+
+.main-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* -------------- Wrappers:END ------------------- */
+
+/* -------------- NavBar ------------------- */
+.dropdown-menu li:hover .sub-menu {
+  visibility: visible;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0;
+}
+
+/* -------------- NavBar:END ------------------- */
+
+/* -------------- Text-Style ------------------- */
+h1 {
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.logo { font-weight: bold; }
+.active { text-decoration: underline; }
+.is-link:hover { cursor: pointer; }
+
+a:focus,
+span { outline: none; }
+
+.navbar-brand:hover,
+.nav-link:hover,
+.active,
+.dropdown-item.active {
+    color: #c12634f2 !important;
+    text-decoration: underline;
+    background: transparent;
+}
+
+/* -------------- Text-Style:END ------------------- */
+
+/* -------------- Responsiveness ------------------- */
+
+@media (max-width: $breakpoint-tablet) {
+  .main-container {
+    width: 100%;
+    text-align: center;
+  }
+
+  form {
+    max-width: 100%;
+  }
+
+  input[type=text],
+  input[type=email],
+  input[type=password],
+  textarea {
+    text-align: center;
+  }
+}
+
+/* -------------- Responsiveness:END ------------------- */
