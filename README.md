@@ -1,5 +1,5 @@
 # Angular Website
-An express server for [Ramverk2 *v2*](https://dbwebb.se/kurser/ramverk2-v2)
+A frontend for [Ramverk2 *v2*](https://dbwebb.se/kurser/ramverk2-v2)
 
 # Badges
 [![Build Status](https://travis-ci.org/mabn17/ramverk2-client.svg?branch=master)](https://travis-ci.org/mabn17/ramverk2-client)
