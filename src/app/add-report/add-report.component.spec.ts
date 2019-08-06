@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormsModule } from '@angular/forms';
 import { AddReportComponent } from './add-report.component';
 
 describe('AddReportComponent', () => {
@@ -8,6 +10,13 @@ describe('AddReportComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        FormsModule,
+        HttpClientTestingModule,
+        RouterTestingModule.withRoutes([
+          { path: 'add/redovisa', component: AddReportComponent },
+        ])
+      ],
       declarations: [ AddReportComponent ]
     })
     .compileComponents();
