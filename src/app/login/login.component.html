@@ -1,1 +1,20 @@
-<p>login works!</p>
+<div class="form-div">
+  <h3 class="text-center"> {{ errorMessage }} </h3>
+  <form>
+    <h1>Ramverk 2 Inlogg</h1>
+    <div class="inset">
+    <p>
+      <label for="email">E-POST ADRESS</label>
+      <input type="text" name="email" [(ngModel)]="email">
+    </p>
+    <p>
+      <label for="password">LÖSENORD</label>
+      <input type="password" name="password" [(ngModel)]="pass">
+    </p>
+    </div>
+    <p class="p-container">
+      <span class="is-link px-3" routerLink="/register">Inget Konto ?</span>
+      <input class="mt-5" (click)="login()" type="submit" name="go" id="go" value="Logga in">
+    </p>
+  </form>
+</div>

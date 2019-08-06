@@ -5,7 +5,9 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { IAllReports } from '../../@Interfaces/IAllReports';
 import { IExpressError } from '../../@Interfaces/IExpressError';
+import { ILogin } from '../../@Interfaces/ILogin';
 import { ISiteText } from '../../@Interfaces/ISiteText';
+import { IUserLogReg } from '../../@Interfaces/IUserLogReg';
 
 
 @Injectable({
@@ -17,6 +19,7 @@ export class HttpService {
   private baseURL: string = environment.backend_url;
   private home = `${this.baseURL}/`;
   private reports = `${this.baseURL}/reports`;
+  private login = `${this.baseURL}/login`;
 
   constructor(private http: HttpClient) { }
 
@@ -27,6 +30,11 @@ export class HttpService {
 
     return err.message;
   }
+
+  doLogin(userInfo: IUserLogReg, url: string = this.login):
+    Observable<ILogin> {
+      return this.http.post<ILogin>(url, userInfo);
+    }
 
   getHomeText(url: string = this.home):
     Observable<ISiteText> {
