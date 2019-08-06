@@ -1,1 +1,14 @@
-<p>reports works!</p>
+<h1>Alla Rapporter</h1>
+
+<ng-container *ngIf="errorMessage; else elseTemplate">
+    {{ errorMessage }}
+</ng-container>
+<ng-template #elseTemplate>
+    <ul *ngIf="reports">
+        <li *ngFor="let report of reports">
+            <p class="name">
+                <a class="" href="#" routerLink="/redovisa/{{ report.title }}" >{{ report.title }}</a>
+            </p>
+        </li>
+    </ul>
+</ng-template>

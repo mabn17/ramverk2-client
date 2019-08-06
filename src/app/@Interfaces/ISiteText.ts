@@ -1,7 +1,4 @@
-interface SiteText {
-  title: string;
-  data: string;
-}
+import { SiteText } from './SiteText';
 
 export interface ISiteText {
   data: SiteText;
