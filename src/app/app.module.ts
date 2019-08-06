@@ -11,6 +11,9 @@ import { ReportDetailsComponent } from './report-details/report-details.componen
 import { AboutComponent } from './about/about.component';
 
 import { HttpService } from './services/http/http.service';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { AddReportComponent } from './add-report/add-report.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { HttpService } from './services/http/http.service';
     HomeComponent,
     ReportsComponent,
     ReportDetailsComponent,
-    AboutComponent
+    AboutComponent,
+    RegisterComponent,
+    LoginComponent,
+    AddReportComponent
   ],
   imports: [
     BrowserModule,
