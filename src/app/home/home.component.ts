@@ -20,7 +20,6 @@ export class HomeComponent implements OnInit {
       data => {
         this.data = data.data.data;
       },
-      // Errors will call this callback instead:
       err => {
         this.errorMessage = this.http.handleError(err);
       }

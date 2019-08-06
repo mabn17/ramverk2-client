@@ -15,8 +15,8 @@ import { ISiteText } from '../../@Interfaces/ISiteText';
 export class HttpService {
 
   private baseURL: string = environment.backend_url;
-  private home = '/';
-  private reports = '/reports';
+  private home = `${this.baseURL}/`;
+  private reports = `${this.baseURL}/reports`;
 
   constructor(private http: HttpClient) { }
 
@@ -28,13 +28,18 @@ export class HttpService {
     return err.message;
   }
 
-  getHomeText(url: string = `${this.baseURL}${this.home}`):
+  getHomeText(url: string = this.home):
     Observable<ISiteText> {
       return this.http.get<ISiteText>(url);
     }
 
-  getAllReports(url: string = `${this.baseURL}${this.reports}`):
+  getAllReports(url: string = this.reports):
     Observable<IAllReports> {
       return this.http.get<IAllReports>(url);
+    }
+
+  getSpesificReport(kmom: string, url: string = this.reports):
+    Observable<ISiteText> {
+      return this.http.get<ISiteText>(`${url}/${kmom}`);
     }
 }

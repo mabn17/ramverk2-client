@@ -1,1 +1,9 @@
-<p>report-details works!</p>
+<h1 class="cap-me">
+  {{ kmom }}
+</h1>
+<ng-container *ngIf="errorMessage; else elseTemplate">
+  {{ errorMessage }}
+</ng-container>
+<ng-template #elseTemplate>
+  <div [innerHTML]=data></div>
+</ng-template>
