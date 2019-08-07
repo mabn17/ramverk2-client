@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login.component';
@@ -13,8 +13,8 @@ describe('LoginComponent', () => {
       imports: [
         FormsModule,
         HttpClientModule,
-        RouterTestingModule.withRoutes([
-          { path: 'login', component: LoginComponent }
+        RouterModule.forRoot([
+          { path: 'login', component: LoginComponent, pathMatch: 'full' }
         ])
       ],
       declarations: [ LoginComponent ]
@@ -29,6 +29,19 @@ describe('LoginComponent', () => {
   });
 
   it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('checking uppdate values', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    const email = compiled.querySelector('#email');
+    const pass = compiled.querySelector('#password');
+    const submit = compiled.querySelector('#go');
+
+    email.value = 'test@test.se';
+    pass.value = 'pass';
+    submit.click();
+
     expect(component).toBeTruthy();
   });
 });

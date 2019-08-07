@@ -9,8 +9,8 @@ import { HttpService } from '../services/http/http.service';
 })
 export class HomeComponent implements OnInit {
 
-  private data: any;
-  private errorMessage: string;
+  data: any;
+  errorMessage: string;
 
   constructor(private http: HttpService) { }
 

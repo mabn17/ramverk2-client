@@ -8,8 +8,8 @@ import { HttpService } from '../services/http/http.service';
 })
 export class ReportsComponent implements OnInit {
 
-  private reports: any;
-  private errorMessage: string;
+  reports: any;
+  errorMessage: string;
 
   constructor(private http: HttpService) { }
 

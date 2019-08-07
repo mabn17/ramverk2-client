@@ -10,20 +10,24 @@ import { UserService } from '../services/user/user.service';
 })
 export class AddReportComponent implements OnInit {
 
-  private title: string;
-  private data: string;
-  private apiToken: string;
-  private errorMessage: string;
+  title: string;
+  data: string;
+  apiToken?: string;
+  errorMessage: string;
 
   constructor(private http: HttpService, private user: UserService) { }
 
   ngOnInit() {
-    this.apiToken = this.user.getToken();
+    this.apiToken = this.user.getToken(false);
+
+    if (!this.apiToken) {
+      this.errorMessage = 'Please login or set your token in locastorage "userToken": "{token}"';
+    }
   }
 
   send(
-    reportTitle: string = this.title,
-    reportData: string = this.data,
+    reportTitle: string = this.title || '',
+    reportData: string = this.data || '',
     token: string = this.apiToken || ''
   ) {
     this.http.addNewReport({ title: reportTitle, text: reportData }, token)

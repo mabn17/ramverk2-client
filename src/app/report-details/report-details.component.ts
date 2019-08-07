@@ -9,9 +9,9 @@ import { HttpService } from '../services/http/http.service';
 })
 export class ReportDetailsComponent implements OnInit {
 
-  private kmom: string;
-  private errorMessage: string;
-  private data: any;
+  kmom: string;
+  errorMessage: string;
+  data: any;
 
   constructor(
     private route: ActivatedRoute,

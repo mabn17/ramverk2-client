@@ -10,9 +10,9 @@ import { UserService } from '../services/user/user.service';
 })
 export class LoginComponent implements OnInit {
 
-  private errorMessage: string;
-  private email: string;
-  private pass: string;
+  errorMessage: string;
+  email: string;
+  pass: string;
 
   constructor(private http: HttpService, private user: UserService) { }
 

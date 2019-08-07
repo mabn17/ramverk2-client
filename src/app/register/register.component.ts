@@ -10,10 +10,10 @@ import { UserService } from '../services/user/user.service';
 })
 export class RegisterComponent implements OnInit {
 
-  private errorMessage: string;
-  private email: string;
-  private pass: string;
-  private passAgain: string;
+  errorMessage: string;
+  email: string;
+  pass: string;
+  passAgain: string;
 
   constructor(private http: HttpService, private user: UserService) { }
 
