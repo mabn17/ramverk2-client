@@ -11,11 +11,15 @@ import { ReportsComponent } from './reports/reports.component';
 import { ReportDetailsComponent } from './report-details/report-details.component';
 import { AboutComponent } from './about/about.component';
 
+import { UserService } from './services/user/user.service';
 import { HttpService } from './services/http/http.service';
+import { SocketService } from './services/socket/socket.service';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { AddReportComponent } from './add-report/add-report.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ChatComponent } from './chat/chat.component';
+import { ChatRoomComponent } from './chat-room/chat-room.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     RegisterComponent,
     LoginComponent,
     AddReportComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ChatComponent,
+    ChatRoomComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +41,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     HttpClientModule,
     FormsModule
   ],
-  providers: [HttpService],
+  providers: [
+    HttpService,
+    SocketService,
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
