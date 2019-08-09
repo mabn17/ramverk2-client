@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -18,8 +19,8 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { AddReportComponent } from './add-report/add-report.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ChatComponent } from './chat/chat.component';
-import { ChatRoomComponent } from './chat-room/chat-room.component';
+import { SharedModule } from './shared/shared.module';
+import { ChatModule } from './chat/chat.module';
 
 @NgModule({
   declarations: [
@@ -31,15 +32,16 @@ import { ChatRoomComponent } from './chat-room/chat-room.component';
     RegisterComponent,
     LoginComponent,
     AddReportComponent,
-    PageNotFoundComponent,
-    ChatComponent,
-    ChatRoomComponent
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    SharedModule,
+    ChatModule
   ],
   providers: [
     HttpService,

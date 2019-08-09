@@ -19,15 +19,15 @@ import { IUserLogReg } from '../../@Interfaces/IUserLogReg';
 
 export class HttpService {
 
-  private baseURL: string = environment.backend_url;
-  private home = `${this.baseURL}/`;
-  private reports = `${this.baseURL}/reports`;
-  private login = `${this.baseURL}/login`;
-  private register = `${this.baseURL}/register`;
+  baseURL: string = environment.backend_url;
+  home = `${this.baseURL}/`;
+  reports = `${this.baseURL}/reports`;
+  login = `${this.baseURL}/login`;
+  register = `${this.baseURL}/register`;
 
   constructor(private http: HttpClient) { }
 
-  handleError(err: IExpressError): string {
+  public handleError(err: IExpressError): string {
     if (err.error.errors) {
       return err.error.errors.detail;
     }
@@ -35,32 +35,32 @@ export class HttpService {
     return err.message;
   }
 
-  doLogin(userInfo: IUserLogReg, url: string = this.login):
+  public doLogin(userInfo: IUserLogReg, url: string = this.login):
     Observable<ILogin> {
       return this.http.post<ILogin>(url, userInfo);
     }
 
-  doRegister(userInfo: IUserLogReg, url: string = this.register):
+  public doRegister(userInfo: IUserLogReg, url: string = this.register):
     Observable<IRegister> {
       return this.http.post<IRegister>(url, userInfo);
     }
 
-  getHomeText(url: string = this.home):
+  public getHomeText(url: string = this.home):
     Observable<ISiteText> {
       return this.http.get<ISiteText>(url);
     }
 
-  getAllReports(url: string = this.reports):
+  public getAllReports(url: string = this.reports):
     Observable<IAllReports> {
       return this.http.get<IAllReports>(url);
     }
 
-  getSpesificReport(kmom: string, url: string = this.reports):
+  public getSpesificReport(kmom: string, url: string = this.reports):
     Observable<ISiteText> {
       return this.http.get<ISiteText>(`${url}/${kmom}`);
     }
 
-  addNewReport(
+  public addNewReport(
     report: ICreateNewReport,
     token: string,
     url: string = this.reports

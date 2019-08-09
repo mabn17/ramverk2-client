@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>{{params.title}}</h2>
+
+<mat-dialog-content>
+  <mat-form-field>
+    <input matInput name="username" placeholder="Namn" 
+           [(ngModel)]="params.username" (keyup.enter)="onSave()" [formControl]="usernameFormControl" required>
+    <mat-error>Inget användarnamn</mat-error>
+    <mat-hint>Skriv användarnamn</mat-hint>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions *ngIf="params?.typeDialog === 'new-user'" [attr.align]="'end'">
+  <button mat-raised-button color="primary" mat-dialog-close (click)="onSave()" [disabled]="usernameFormControl.hasError('required')">Chat!</button>
+</mat-dialog-actions>

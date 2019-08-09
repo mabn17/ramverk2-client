@@ -1,16 +1,28 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
+import * as jwt_decode from "jwt-decode";
+
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  public token?: string;
+  token?: string;
 
   constructor(private router: Router) { }
 
-  getToken(shouldRedirect = true): any {
+  public getDecoded(): { email: string; } {
+    this.token = this.getToken(false);
+    try {
+      // tslint:disable-line
+      return jwt_decode(this.token);
+    } catch (e) {
+      return { email: 'anonym' };
+    }
+  }
+
+  public getToken(shouldRedirect = true): any {
     this.token = localStorage.getItem('userToken') || null;
 
     if (!this.token && shouldRedirect) {
@@ -20,11 +32,11 @@ export class UserService {
     return this.token;
   }
 
-  setToken(payload: string): void {
+  public setToken(payload: string): void {
     localStorage.setItem('userToken', payload);
   }
 
-  removeToken(path?: string): void {
+  public removeToken(path?: string): void {
     localStorage.removeItem('userToken');
 
     if (path) {
@@ -32,9 +44,9 @@ export class UserService {
     }
   }
 
-  redirect(path: string, reload = false) {
-
+  public redirect(path: string, reload = false): void {
     this.router.navigate([path]);
+
     if (reload) {
       location.href = path;
     }
