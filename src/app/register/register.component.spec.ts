@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MaterialModule } from '../shared/material/material.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { RegisterComponent } from './register.component';
 
 const backendUrl = ' http://localhost:8080';
@@ -15,6 +17,8 @@ describe('RegisterComponent', () => {
       imports: [
         FormsModule,
         HttpClientModule,
+        MaterialModule,
+        BrowserAnimationsModule,
         RouterTestingModule.withRoutes([
           { path: 'register', component: RegisterComponent }
         ])

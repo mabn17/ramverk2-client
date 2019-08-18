@@ -13,6 +13,13 @@ describe('UserService', () => {
     expect(service).toBeTruthy();
   });
 
+  it('Tests getDecoded', () => {
+    const service: UserService = TestBed.get(UserService);
+    const token = service.getDecoded();
+
+    expect(typeof token.email).toEqual('string');
+  });
+
   it('Tests setToken() and removeToken()', () => {
     const service: UserService = TestBed.get(UserService);
     localStorage.removeItem('userToken');

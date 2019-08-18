@@ -22,6 +22,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { SharedModule } from './shared/shared.module';
 import { ChatModule } from './chat/chat.module';
 
+import { MaterialModule } from './shared/material/material.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +43,8 @@ import { ChatModule } from './chat/chat.module';
     HttpClientModule,
     FormsModule,
     SharedModule,
-    ChatModule
+    ChatModule,
+    MaterialModule
   ],
   providers: [
     HttpService,

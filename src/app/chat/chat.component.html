@@ -1,8 +1,8 @@
-<button mat-fab (click)="onClickUserInfo()">
+<button class="mt-5" mat-fab (click)="onClickUserInfo()">
     <mat-icon>person</mat-icon>
 </button>
 <div class="chat-container">
-  <mat-card class="main-card" >
+  <mat-card class="main-card mat-elevation-z0" >
     <mat-list class="chat-list" id="msgContainer">
       <mat-list-item *ngFor="let message of messages" [ngClass]="[(message.action === undefined && message.from.id === user.id)? 'chat-list-item': '']">
         <img mat-list-avatar *ngIf="message.action === undefined" [src]="message.from.avatar">
@@ -35,3 +35,6 @@
     </div>
   </mat-card>
 </div>
+<button mat-fab (click)="onSaveOrShow()">
+    <mat-icon>save</mat-icon>
+</button>

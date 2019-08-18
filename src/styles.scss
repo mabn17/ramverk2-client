@@ -2,12 +2,12 @@
 @import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import url('https://fonts.googleapis.com/css?family=Nunito,400,700&display=swap');
 
-$primary-color: #212529;
-$body-bg-color: #282424;
+$primary-color: #2bbbad;
+$body-bg-color: #fff;
 $font-family: 'Nunito', sans-serif;
 $nav-link-color: #fff;
 $font-size: 18px;
-$font-color: #c12634f2;
+$font-color: #3f4ed8f2;
 $breakpoint-tablet: 768px;
 
 /* -------------- Wrappers ------------------- */
@@ -16,12 +16,21 @@ body {
     font-family: $font-family;
     font-size: $font-size;
     color: $font-color;
-    background-color: $body-bg-color;
+    // background-color: $body-bg-color;
+}
+
+.main-container {
+  padding-right: 10%;
+  padding-left: 10%;
 }
 
 header {
-    background: $primary-color;
+    background: linear-gradient(145deg, #0d47a1, #42a5f5);
     padding: 0.2em 0;
+}
+
+.dropdown-menu {
+  background: linear-gradient(145deg, #0d47a1, #42a5f5);
 }
 
 .main-container {
@@ -62,7 +71,7 @@ span { outline: none; }
 .nav-link:hover,
 .active,
 .dropdown-item.active {
-    color: #c12634f2 !important;
+    color: black !important;
     text-decoration: underline;
     background: transparent;
 }

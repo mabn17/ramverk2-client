@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
 import { IAllReports } from '../../@Interfaces/IAllReports';
+import { IAllChatMessage } from '../../@Interfaces/IAllChatMassage';
 import { ICreateNewReport } from '../../@Interfaces/ICreateNewReport';
 import { IExpressError } from '../../@Interfaces/IExpressError';
 import { ILogin } from '../../@Interfaces/ILogin';
@@ -11,6 +12,8 @@ import { INewReport } from '../../@Interfaces/INewReport';
 import { IRegister } from '../../@Interfaces/IRegister';
 import { ISiteText } from '../../@Interfaces/ISiteText';
 import { IUserLogReg } from '../../@Interfaces/IUserLogReg';
+
+import { IChatMessage } from '../../@Interfaces/IChatMessage';
 
 
 @Injectable({
@@ -24,6 +27,7 @@ export class HttpService {
   reports = `${this.baseURL}/reports`;
   login = `${this.baseURL}/login`;
   register = `${this.baseURL}/register`;
+  chat = `${this.baseURL}/chat`;
 
   constructor(private http: HttpClient) { }
 
@@ -71,4 +75,17 @@ export class HttpService {
         }
       });
     }
+
+  public saveChatMessages(
+    chatMessages: Array<IChatMessage>,
+    url: string = this.chat
+  ): Observable<any> {
+    return this.http.post(url, { message: chatMessages });
+  }
+
+  public getChatMessages(
+    url: string = this.chat
+  ): Observable<IAllChatMessage> {
+    return this.http.get<IAllChatMessage>(url);
+  }
 }

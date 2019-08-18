@@ -1,20 +1,30 @@
-<div class="form-div">
+<div class="mt-5">
   <h3 class="text-center"> {{ errorMessage }} </h3>
-  <form>
-    <h1>Ramverk 2 Inlogg</h1>
-    <div class="inset">
-    <p>
-      <label for="email">E-POST ADRESS</label>
-      <input type="text" name="email" id="email" [(ngModel)]="email">
-    </p>
-    <p>
-      <label for="password">LÖSENORD</label>
-      <input type="password" name="password" id="password" [(ngModel)]="pass">
-    </p>
-    </div>
-    <p class="p-container">
-      <span class="is-link px-3" routerLink="/register">Inget Konto ?</span>
-      <input class="mt-5" (click)="login()" type="submit" name="go" id="go" value="Logga in">
-    </p>
-  </form>
+  <mat-card class="">
+    <mat-card-header>
+      <mat-card-title>Ramverk 2 Inlogg</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form class="">
+        <table class="" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="">
+              <input matInput placeholder="Email" id="email" [(ngModel)]="email" name="email" required>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+          <td><mat-form-field class="">
+            <input matInput placeholder="Password" id="password" [(ngModel)]="pass" type="password" name="password" required>
+          </mat-form-field></td>
+        </tr></table>
+      </form>
+      <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)="login()" id="go" color="primary">Logga in</button>
+    </mat-card-actions>
+    <small class="is-link text-primary" routerLink="/register">Inget Konto ?</small>
+  </mat-card>
 </div>

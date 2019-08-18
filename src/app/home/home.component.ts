@@ -8,7 +8,6 @@ import { HttpService } from '../services/http/http.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
   data: any;
   errorMessage: string;
 

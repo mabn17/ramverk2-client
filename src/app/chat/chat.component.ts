@@ -6,6 +6,7 @@ import { IChatEvent } from '../@Interfaces/IChatEvent';
 import { IChatMessage } from '../@Interfaces/IChatMessage';
 import { IChatUser } from '../@Interfaces/IChatUser';
 
+import { HttpService } from '../services/http/http.service';
 import { SocketService } from '../services/socket/socket.service';
 import { DialogUserComponent } from './dialog-user/dialog-user.component';
 import { DialogUserType } from './dialog-user/dialog-user-type';
@@ -20,6 +21,7 @@ const AVATAR_URL = 'https://api.adorable.io/avatars/285';
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit, AfterViewInit {
+  status: string;
   container: HTMLElement;
   action = IChatAction;
   user: IChatUser;
@@ -35,20 +37,42 @@ export class ChatComponent implements OnInit, AfterViewInit {
     }
   };
 
-  constructor(private socketService: SocketService, public dialog: MatDialog) { }
+  constructor(
+    private socketService: SocketService,
+    private http: HttpService,
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
     this.initModel();
 
-    // https://github.com/angular/angular/issues/14748
     setTimeout(() => {
       this.openUserPopup(this.defaultDialogUserParams);
     }, 0);
+
+    // this.messages =
+
+    this.http.getChatMessages().subscribe(
+      data => {
+        this.messages = data.data;
+      },
+      err => {
+        this.messages = [
+          {
+            from: {
+              id: 9999,
+              name: 'Server Error',
+              avatar: `${AVATAR_URL}/9999`
+            },
+            content: 'Problem loading saved messages, server might be down'
+          }
+        ];
+      }
+    );
   }
 
-  ngAfterViewInit() {         
-    // this.container = document.getElementById("msgContainer");           
-    this.scrollDown();    
+  ngAfterViewInit() {
+    this.scrollDown();
   }
 
 
@@ -66,7 +90,6 @@ export class ChatComponent implements OnInit, AfterViewInit {
     this.ioConnection = this.socketService.onMessage()
       .subscribe((message: IChatMessage) => {
         this.messages.push(message);
-        // this.container = document.getElementById("msgContainer");           
         this.scrollDown();
       });
 
@@ -87,7 +110,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
   }
 
   private scrollDown(): void {
-    this.container = document.getElementById("msgContainer");
+    this.container = document.getElementById('msgContainer');
     setTimeout(() => {
       this.container.scrollTop = this.container.scrollHeight;
     }, 0);
@@ -153,5 +176,18 @@ export class ChatComponent implements OnInit, AfterViewInit {
     }
 
     this.socketService.send(message);
+  }
+
+  public onSaveOrShow() {
+    this.http.saveChatMessages(this.messages).subscribe(
+      data => {
+        this.status = 'Messages saved';
+        console.log(data);
+      },
+      err => {
+        this.status = 'Something went wrong';
+        console.log(err);
+      }
+    );
   }
 }

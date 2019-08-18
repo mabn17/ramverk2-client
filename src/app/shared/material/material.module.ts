@@ -11,6 +11,7 @@ import {
   MatListModule,
   MatSidenavModule,
   MatToolbarModule,
+  MatProgressSpinnerModule,
 } from '@angular/material';
 
 @NgModule({
@@ -25,6 +26,7 @@ import {
     MatListModule,
     MatSidenavModule,
     MatToolbarModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     MatButtonModule,
@@ -36,6 +38,7 @@ import {
     MatListModule,
     MatSidenavModule,
     MatToolbarModule,
+    MatProgressSpinnerModule
   ],
   declarations: [],
   providers: [

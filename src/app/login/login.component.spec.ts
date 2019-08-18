@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MaterialModule } from '../shared/material/material.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { LoginComponent } from './login.component';
 
 describe('LoginComponent', () => {
@@ -13,6 +15,8 @@ describe('LoginComponent', () => {
       imports: [
         FormsModule,
         HttpClientModule,
+        MaterialModule,
+        BrowserAnimationsModule,
         RouterModule.forRoot([
           { path: 'login', component: LoginComponent, pathMatch: 'full' }
         ])

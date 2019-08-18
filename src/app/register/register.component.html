@@ -1,24 +1,40 @@
-<div class="form-div">
+<div class="mt-5">
   <h3 class="text-center"> {{ errorMessage }} </h3>
-  <form>
-    <h1>Ramverk 2 Registrering</h1>
-    <div class="inset">
-    <p>
-      <label for="email">E-POST ADRESS</label>
-      <input type="text" name="email" id="email" [(ngModel)]="email">
-    </p>
-    <p>
-      <label for="password">LÖSENORD</label>
-      <input type="password" name="pass" id="pass" [(ngModel)]="pass">
-    </p>
-    <p>
-      <label for="password">LÖSENORD - IGEN</label>
-      <input type="password" name="passAgain" id="passAgain" [(ngModel)]="passAgain">
-    </p>
-    </div>
-    <p class="p-container">
-      <span class="is-link px-3" routerLink="/login">Redan Medlem ?</span>
-      <input class="mt-5" (click)="register()" type="submit" name="go" id="go" value="Registrera">
-    </p>
-  </form>
+  <mat-card class="">
+    <mat-card-header>
+      <mat-card-title>Ramverk 2 Registrering</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form class="">
+        <table class="" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="">
+              <input matInput placeholder="Email" id="email" [(ngModel)]="email" name="email" required>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="">
+                <input matInput placeholder="Lösenord" id="pass" [(ngModel)]="passAgain"type="password" name="passAgain" required>
+             </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+              <td>
+                <mat-form-field class="">
+                  <input matInput placeholder="Skriv-Om Lösenord" id="passAgain" [(ngModel)]="pass"type="password" name="pass" required>
+               </mat-form-field>
+              </td>
+            </tr>
+        </table>
+      </form>
+      <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)="register()" color="primary">Registrera</button>
+    </mat-card-actions>
+    <small class="is-link mt-4" routerLink="/login" class="text-primary">Redan Medlem?</small>
+  </mat-card>
 </div>
