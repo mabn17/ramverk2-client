@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'om', component: AboutComponent },
   { path: 'redovisa', component: ReportsComponent },
+  { path: 'redovisa/:kmom/:id', component: ReportDetailsComponent },
   { path: 'redovisa/:kmom', component: ReportDetailsComponent },
   { path: 'register', component: RegisterComponent },
   { path: '**', component: PageNotFoundComponent },
