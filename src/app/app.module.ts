@@ -37,11 +37,11 @@ import { MaterialModule } from './shared/material/material.module';
     PageNotFoundComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
     SharedModule,
     ChatModule,
     MaterialModule

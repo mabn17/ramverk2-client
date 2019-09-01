@@ -1,12 +1,15 @@
 <form class="w-100">
-  <h1>Skapa ny Rapport</h1>
+    <h1 *ngIf="!kmom; else edit" >Skapa ny Rapport</h1>
+    <ng-template #edit>
+            <h1>Redigera Rapport</h1>
+    </ng-template>
   <div class="inset">
   <p>
       <label for="title">NAMN</label><br>
       <input type="text" name="title" [(ngModel)]="title">
   </p>
   <p>
-      <label for="password">TEXT <b>(ANVÄND MARKDOWN)</b></label><br>
+      <label for="data">TEXT <b>(ANVÄND MARKDOWN)</b></label><br>
       <textarea class="" name="data" [(ngModel)]="data"></textarea>
   </p>
   </div>

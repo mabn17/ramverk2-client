@@ -26,9 +26,7 @@ export class ReportDetailsComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
 
     if (this.kmom === 'week' && this.id) {
-      const kmom = this.id.length === 1 ? `0${this.id}` : this.id;
-      this.kmom = `kmom${kmom}`;
-      console.log(this.kmom);
+      this.kmom = this.id;
     }
 
     this.getReport();

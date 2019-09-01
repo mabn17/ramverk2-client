@@ -1,3 +1,10 @@
+<style>
+  ::ng-deep .mat-card-header-text { margin: 0 !important; }
+  @media screen and (max-width: 768px) {
+    ::ng-deep .mat-card-header-text { margin: 0 auto !important; }
+  }
+</style>
+
 <div class="mt-5">
   <h3 class="text-center"> {{ errorMessage }} </h3>
   <mat-card class="">
@@ -5,12 +12,12 @@
       <mat-card-title>Ramverk 2 Inlogg</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <form class="">
+      <form class="" #myForm="ngForm">
         <table class="" cellspacing="0">
           <tr>
             <td>
               <mat-form-field class="">
-              <input matInput placeholder="Email" id="email" [(ngModel)]="email" name="email" required>
+              <input matInput placeholder="Email" id="email" [(ngModel)]="email" name="email" type="email" [email]="true" required>
               </mat-form-field>
             </td>
           </tr>
@@ -23,7 +30,8 @@
       <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button (click)="login()" id="go" color="primary">Logga in</button>
+      <button type="submit" mat-raised-button (click)="login()" id="go" color="primary"
+        [disabled]="!myForm.valid">Logga in</button>
     </mat-card-actions>
     <small class="is-link text-primary" routerLink="/register">Inget Konto ?</small>
   </mat-card>

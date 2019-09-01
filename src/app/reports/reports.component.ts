@@ -16,7 +16,7 @@ export class ReportsComponent implements OnInit {
   ngOnInit() {
     this.http.getAllReports().subscribe(
       data => {
-        this.reports = data.data;
+        this.reports = data.extra;
       },
       err => {
         this.errorMessage = this.http.handleError(err);

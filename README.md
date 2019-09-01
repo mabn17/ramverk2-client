@@ -19,11 +19,12 @@ A frontend for [Ramverk2 *v2*](https://dbwebb.se/kurser/ramverk2-v2)
 2. Tests with Selenium `npm run test:ci`
 
 ## Routes
-***/*** - Home  
-***/add/redovisa*** - Add report (requires authenticated user to send)  
-***/chat*** - Chat using sockets  
-***/redovisa/:kmom*** - To see a spesific report  
-***/om*** - The about page  
-***/login*** - The login page  
-***/register*** - The registration page  
-***/\*\**** - Catching unknown routes with an error message  
+***/*** - Home.  
+***/add/redovisa/:kmom*** - Eddit given report (requires authenticated user to send), redirects to /add/redovisa if there is no matching title.  
+***/add/redovisa*** - Add report (requires authenticated user to send).  
+***/chat*** - Chat using sockets.  
+***/redovisa/:kmom*** - To see a spesific report.  
+***/om*** - The about page.  
+***/login*** - The login page.  
+***/register*** - The registration page.  
+***/\*\**** - Catching unknown routes with an error message.  

@@ -13,6 +13,7 @@ import { ReportDetailsComponent } from './report-details/report-details.componen
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: 'add/redovisa/:kmom', component: AddReportComponent },
   { path: 'add/redovisa', component: AddReportComponent },
   { path: 'chat', component: ChatComponent },
   { path: 'login', component: LoginComponent },
@@ -25,7 +26,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes),
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

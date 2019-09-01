@@ -1,16 +1,30 @@
+<style>
+  #year, #month, #day { margin: 5px; }
+  ::ng-deep .mat-card-header-text { margin: 0 !important; }
+  #shadow {
+    padding: 10px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);
+  }
+  @media screen and (max-width: 768px) {
+    ::ng-deep .mat-card-header-text { margin: 0 auto !important; }
+  }
+</style>
+
+
 <div class="mt-5">
   <h3 class="text-center"> {{ errorMessage }} </h3>
   <mat-card class="">
     <mat-card-header>
-      <mat-card-title>Ramverk 2 Registrering</mat-card-title>
+      <mat-card-title id="main-title">Ramverk 2 Registrering</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <form class="">
+      <form class="" #myForm="ngForm">
         <table class="" cellspacing="0">
           <tr>
             <td>
+              <h6 style="padding-top: 15px;">Inloggningsuppgifter:</h6>
               <mat-form-field class="">
-              <input matInput placeholder="Email" id="email" [(ngModel)]="email" name="email" required>
+              <input matInput placeholder="Email" id="email" [(ngModel)]="email" name="email" type="email" [email]="true" required>
               </mat-form-field>
             </td>
           </tr>
@@ -22,18 +36,54 @@
             </td>
           </tr>
           <tr>
-              <td>
-                <mat-form-field class="">
-                  <input matInput placeholder="Skriv-Om Lösenord" id="passAgain" [(ngModel)]="pass"type="password" name="pass" required>
-               </mat-form-field>
-              </td>
-            </tr>
+            <td>
+              <mat-form-field class="">
+                <input matInput placeholder="Skriv-Om Lösenord" id="passAgain" [(ngModel)]="pass"type="password" name="pass" required>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h6 style="padding-top: 15px;">Född:</h6>
+              <div id="shadow">
+              <!-- År -->
+              <mat-form-field id="year">
+                <mat-label>År</mat-label>
+                <mat-select [(ngModel)]="yearValue" name="year" defaultValue="0" (selectionChange)="getDays()" required>
+                  <mat-option *ngFor="let year of years" [value]="year.value">
+                    {{year.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <!-- Månad -->
+              <mat-form-field id="month">
+                <mat-label>Månad</mat-label>
+                <mat-select [(ngModel)]="monthValue" name="month" (selectionChange)="getDays()" required>
+                  <mat-option *ngFor="let month of months" [value]="month.viewValue">
+                    {{month.value}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <!-- Dag -->
+              <mat-form-field id="day">
+                <mat-label>Dag</mat-label>
+                <mat-select [(ngModel)]="dayValue" (selectionChange)="setSelectedDate()" name="day" required>
+                  <mat-option *ngFor="let day of days" [value]="day.viewValue">
+                    {{day.value}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field><br>
+              {{ selectedDate }}
+            </div>
+            </td>
+          </tr>
         </table>
       </form>
       <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button (click)="register()" color="primary">Registrera</button>
+      <button mat-raised-button (click)="register()" color="primary"
+        [disabled]="!myForm.valid">Registrera</button>
     </mat-card-actions>
     <small class="is-link mt-4" routerLink="/login" class="text-primary">Redan Medlem?</small>
   </mat-card>

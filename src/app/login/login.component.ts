@@ -9,7 +9,6 @@ import { UserService } from '../services/user/user.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
   errorMessage: string;
   email: string;
   pass: string;

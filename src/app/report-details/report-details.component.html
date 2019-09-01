@@ -1,6 +1,14 @@
-<h1 class="cap-me">
-  {{ kmom }}
-</h1>
+<style>
+.bottom {
+  float: right;
+}
+.no {
+  clear: both;
+  padding-bottom: 20px;
+}
+</style>
+<a class="bottom" href="#" routerLink="/add/redovisa/{{ kmom }}" >Redigera</a>
+<br class="no">
 <ng-container *ngIf="errorMessage; else elseTemplate">
   {{ errorMessage }}
 </ng-container>
