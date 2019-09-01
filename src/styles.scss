@@ -27,10 +27,16 @@ body {
 header {
     background: linear-gradient(145deg, #0d47a1, #42a5f5);
     padding: 0.2em 0;
+    z-index: 9999;
 }
 
 .dropdown-menu {
   background: linear-gradient(145deg, #0d47a1, #42a5f5);
+  z-index: 9999;
+}
+
+nav {
+  z-index: 9999;
 }
 
 .main-container {

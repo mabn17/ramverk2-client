@@ -1,3 +1,4 @@
+<div class="main-container">
 <button class="mt-5" mat-fab (click)="onClickUserInfo()">
     <mat-icon>person</mat-icon>
 </button>
@@ -18,6 +19,9 @@
         <p mat-line *ngIf="message.action === action.RENAME" class="chat-notification">
           <span> <b>{{message.content.previousUsername}}</b> Har Bytt Namn Till <b>{{message.content.username}}</b> </span>
         </p>
+        <p mat-line *ngIf="message.when">
+          <small><i>{{ message.when }}</i></small>
+        </p>
       </mat-list-item>
     </mat-list>
     <div class="chat-footer-container">
@@ -35,6 +39,9 @@
     </div>
   </mat-card>
 </div>
+<div class="mt-5">
 <button mat-fab (click)="onSaveOrShow()">
     <mat-icon>save</mat-icon>
 </button>
+</div>
+</div>

@@ -64,7 +64,8 @@ export class ChatComponent implements OnInit, AfterViewInit {
               name: 'Server Error',
               avatar: `${AVATAR_URL}/9999`
             },
-            content: 'Problem loading saved messages, server might be down'
+            content: 'Problem loading saved messages, server might be down',
+            when: this.formatDateToString()
           }
         ];
       }
@@ -148,9 +149,11 @@ export class ChatComponent implements OnInit, AfterViewInit {
       return;
     }
 
+    console.log(this.formatDateToString());
     this.socketService.send({
       from: this.user,
-      content: message
+      content: message,
+      when: this.formatDateToString()
     });
 
     // To prevent spamm
@@ -163,7 +166,8 @@ export class ChatComponent implements OnInit, AfterViewInit {
     if (action === IChatAction.JOINED) {
       message = {
         from: this.user,
-        action
+        action,
+        when: this.formatDateToString()
       };
     } else if (action === IChatAction.RENAME) {
       message = {
@@ -171,7 +175,8 @@ export class ChatComponent implements OnInit, AfterViewInit {
         content: {
           username: this.user.name,
           previousUsername: params.previousUsername
-        }
+        },
+        when: this.formatDateToString()
       };
     }
 
@@ -190,4 +195,13 @@ export class ChatComponent implements OnInit, AfterViewInit {
       }
     );
   }
+
+  public formatDateToString(date: Date = new Date()): string {
+    const dd = (date.getDate() < 10 ? '0' : '') + date.getDate();
+    const MM = ((date.getMonth() + 1) < 10 ? '0' : '') + (date.getMonth() + 1);
+    const hh = (date.getHours() < 10 ? '0' : '') + date.getHours();
+    const mm = (date.getMinutes() < 10 ? '0' : '') + date.getMinutes();
+
+    return (`${MM}/${dd} kl: ${hh}:${mm}`);
+ }
 }

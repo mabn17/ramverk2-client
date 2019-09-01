@@ -5,4 +5,5 @@ export interface IChatMessage {
     from?: IChatUser;
     content?: any;
     action?: IChatAction;
+    when?: string;
 }
