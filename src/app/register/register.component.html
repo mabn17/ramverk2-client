@@ -82,7 +82,7 @@
       <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button (click)="register()" color="primary"
+      <button mat-raised-button (click)="register()" color="primary" id="go"
         [disabled]="!myForm.valid">Registrera</button>
     </mat-card-actions>
     <small class="is-link mt-4" routerLink="/login" class="text-primary">Redan Medlem?</small>

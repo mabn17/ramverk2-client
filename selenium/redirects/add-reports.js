@@ -3,8 +3,6 @@
  */
 "use strict";
 
-
-
 const assert = require("assert");
 const test = require("selenium-webdriver/testing");
 const webdriver = require("selenium-webdriver");
@@ -13,13 +11,13 @@ const By = webdriver.By;
 let browser;
 
 // Test suite
-test.describe("Register", function() {
+test.describe("About", function() {
     test.beforeEach(function(done) {
         this.timeout(20000);
         browser = new webdriver.Builder().
             withCapabilities(webdriver.Capabilities.firefox()).build();
 
-        browser.get("http://localhost:4200/register");
+        browser.get("http://localhost:4200/");
         done();
     });
 
@@ -28,24 +26,38 @@ test.describe("Register", function() {
         done();
     });
 
+
+    function goToNavLink(target) {
+        browser.findElement(By.linkText(target)).then(function(element) {
+            element.click();
+        });
+    }
+
     function matchUrl(target) {
         browser.getCurrentUrl().then(function(url) {
             assert.ok(url.endsWith(target));
         });
     }
 
-    test.it("Should be register URL", function(done) {
-        matchUrl('register');
+    function assertH1(target) {
+        browser.findElement(By.css("h1")).then(function(element) {
+            element.getText().then(function(text) {
+                assert.equal(text, target);
+            });
+        });
+    }
+
+    test.it("Should be Om URL", function(done) {
+        goToNavLink('Om');
+        matchUrl('om');
+
         done();
     });
 
-    test.it("Button should be disabled with no values", function(done) {
-        var btn = browser.findElement(By.id('go'));
-        btn.getAttribute('disabled')
-        .then(function(disabled) {
-            assert.equal(disabled, 'true');
-        });
-
+    test.it("Title should be Om", function(done) {
+        goToNavLink('Om');
+        
+        assertH1("Om");
         done();
     });
 });
