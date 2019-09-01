@@ -49,13 +49,20 @@ export class RegisterComponent implements OnInit {
     this.setYears();
   }
 
-  register(userName = this.email, password = this.pass, passwordAgain = this.passAgain) {
+  register(
+    userName = this.email,
+    password = this.pass,
+    passwordAgain = this.passAgain,
+    bd = this.selectedDate
+  ) {
     if (password !== passwordAgain) {
       this.errorMessage = 'Passwords not matching';
       return;
     }
 
-    this.http.doRegister({ email: userName, pass: password }).subscribe(
+    const formatedBD = bd.replace(/\//g, '-');
+
+    this.http.doRegister({ email: userName, pass: password, birthday: formatedBD }).subscribe(
       message => {
         this.http.doLogin({ email: userName, pass: password }).subscribe(
           data => {
@@ -85,14 +92,13 @@ export class RegisterComponent implements OnInit {
   }
 
   private getNrOfDays(year: number, month: number): number {
-    console.log(new Date(year, month, 0).getMonth());
     return new Date(year, month, 0).getDate() + 1;
   }
 
   private setDays(daysInDate: number): void {
     const days = new Array();
 
-    for (let index = 0; index < daysInDate; index++) {
+    for (let index = 1; index < daysInDate; index++) {
       days.push({
         value: index.toString(),
         viewValue: index.toString()
