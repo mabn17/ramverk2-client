@@ -60,7 +60,11 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    const formatedBD = bd.replace(/\//g, '-');
+    let formatedBD = '';
+
+    if (bd) {
+      formatedBD = bd.replace(/\//g, '-');
+    }
 
     this.http.doRegister({ email: userName, pass: password, birthday: formatedBD }).subscribe(
       message => {
