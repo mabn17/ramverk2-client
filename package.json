@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve -o",
-    "build": "ng build",
+    "build": "ng build --prod",
     "test": "mocha --timeout 15000 ./selenium/**/*.js",
     "dev:test": "ng test",
     "test:ci": "ng test --watch=false",

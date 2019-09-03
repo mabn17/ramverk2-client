@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
 
 import { IChatAction } from '../@Interfaces/IChatAction';
@@ -20,7 +20,7 @@ const AVATAR_URL = 'https://api.adorable.io/avatars/285';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent implements OnInit, AfterViewInit {
+export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
   status: string;
   container: HTMLElement;
   action = IChatAction;
@@ -74,6 +74,10 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.scrollDown();
+  }
+
+  ngOnDestroy() {
+    this.dialog.closeAll();
   }
 
 
