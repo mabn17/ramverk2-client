@@ -24,10 +24,9 @@
         </p>
       </mat-list-item>
     </mat-list>
-    <div class="chat-footer-container">
-      <mat-icon>message</mat-icon>
-      <mat-form-field class="chat-input ml-4" >
+    <div class="chat-footer-container" style="border-top: 1px solid black; margin: 2px;">
         <input matInput 
+               autofocus
                #inputMessage 
                maxlength="140" 
                placeholder="Skriv in ditt meddelande"
@@ -35,7 +34,6 @@
                (keyup.enter)="sendMessage(messageContent)"
         >
         <mat-hint align="end">{{inputMessage.value.length}}/140</mat-hint>
-      </mat-form-field>
     </div>
   </mat-card>
 </div>

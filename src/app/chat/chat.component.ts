@@ -191,11 +191,10 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
     this.http.saveChatMessages(this.messages).subscribe(
       data => {
         this.status = 'Messages saved';
-        console.log(data);
+        alert('Messages are now saved');
       },
       err => {
         this.status = 'Something went wrong';
-        console.log(err);
       }
     );
   }
