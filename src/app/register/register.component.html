@@ -18,6 +18,7 @@
       <mat-card-title id="main-title">Ramverk 2 Registrering</mat-card-title>
     </mat-card-header>
     <mat-card-content>
+      <p>Registrera dig för att få tillgång till att redigera och lägga till redovisningstexter.</p>
       <form class="" #myForm="ngForm">
         <table class="" cellspacing="0">
           <tr>
@@ -31,7 +32,7 @@
           <tr>
             <td>
               <mat-form-field class="">
-                <input matInput placeholder="Lösenord" id="pass" [(ngModel)]="passAgain"type="password" name="passAgain" required>
+                <input matInput placeholder="Lösenord (1-255 bokstäver)" id="pass" [(ngModel)]="passAgain"type="password" name="passAgain" required>
              </mat-form-field>
             </td>
           </tr>
@@ -75,6 +76,13 @@
               </mat-form-field><br>
               {{ selectedDate }}
             </div>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding-top: 20px;">
+                <mat-checkbox [(ngModel)]="agreed" name="agreed" color="primary" required>
+                  I have read and accept the terms and conditions.
+                </mat-checkbox>
             </td>
           </tr>
         </table>

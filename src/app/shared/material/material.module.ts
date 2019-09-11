@@ -13,7 +13,8 @@ import {
   MatToolbarModule,
   MatProgressSpinnerModule,
   MatSelectModule,
-  MatOptionModule
+  MatOptionModule,
+  MatCheckboxModule
 } from '@angular/material';
 
 @NgModule({
@@ -30,7 +31,8 @@ import {
     MatToolbarModule,
     MatProgressSpinnerModule,
     MatSelectModule,
-    MatOptionModule
+    MatOptionModule,
+    MatCheckboxModule
   ],
   exports: [
     MatButtonModule,
@@ -44,7 +46,8 @@ import {
     MatToolbarModule,
     MatProgressSpinnerModule,
     MatSelectModule,
-    MatOptionModule
+    MatOptionModule,
+    MatCheckboxModule
   ],
   declarations: [],
   providers: [
