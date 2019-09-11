@@ -76,17 +76,13 @@ export class RegisterComponent implements OnInit {
           },
           err => {
             this.errorMessage = message.data.message;
-
-            if (this.errorMessage.indexOf('SQLITE_CONSTRAINT') !== -1) {
-              this.errorMessage = 'Email already in use';
-            }
           }
         );
       },
       err => {
         this.errorMessage = this.http.handleError(err);
         if (this.errorMessage.indexOf('SQLITE_CONSTRAINT') !== -1) {
-          this.errorMessage = 'Email already in use';
+          this.errorMessage = 'Email addressen är redan i användning.';
         }
       }
     );
