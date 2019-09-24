@@ -19,7 +19,7 @@ test.describe("Register", function() {
         browser = new webdriver.Builder().
             withCapabilities(webdriver.Capabilities.firefox()).build();
 
-        browser.get("http://localhost:4200/register");
+        browser.get("http://localhost:4200/");
         done();
     });
 
@@ -33,13 +33,25 @@ test.describe("Register", function() {
             assert.ok(url.endsWith(target));
         });
     }
+    function goToNavLink(target) {
+        browser.findElement(By.linkText(target)).then(function(element) {
+            element.click();
+        });
+    }
 
     test.it("Should be register URL", function(done) {
+        goToNavLink("Logga in");
+        browser.findElement(By.id('register')).click();
+        this.timeout(10000);
         matchUrl('register');
         done();
     });
 
     test.it("Button should be disabled with no values", function(done) {
+        goToNavLink("Logga in");
+        browser.findElement(By.id('register')).click();
+        this.timeout(10000);
+
         var btn = browser.findElement(By.id('go'));
         btn.getAttribute('disabled')
         .then(function(disabled) {

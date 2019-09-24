@@ -2,7 +2,8 @@
 
 # App files
 /src/environments/environment.prod.ts
-
+/http.log
+http.log
 # compiled output
 /dist
 /tmp
