@@ -2,8 +2,12 @@ build:
   nodes:
     coverage:
       tests:
+        before:
+          - command: npm start
+            background: true
         override:
           - command: npm run test:ci
             coverage:
               file: coverage/redovisa/clover.xml
               format: clover
+          - command: npm run test:ci:sel
