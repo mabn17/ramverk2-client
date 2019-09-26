@@ -11,3 +11,4 @@ build:
               file: coverage/redovisa/clover.xml
               format: clover
           - command: npm run test:ci:sel
+          - command: npm run lint
